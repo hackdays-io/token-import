@@ -45,9 +45,13 @@ const Home: NextPage = () => {
       case 0:
         return (
           <>
-            <Typography variant="caption">まず初めに、MetaMaskをインストールしてください。</Typography>
-            <Link href="https://metamask.io/download" target="_blank" rel="noreferrer">MetaMaskをインストール</Link>
-            <div><Button variant="outlined" onClick={() => setActiveStep(1)}>Next</Button></div>
+            <Box>
+              <Typography variant="body2" color="white">まず初めに、MetaMaskをインストールしてください。</Typography>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around', marginTop: '12px' }}>
+                <Link href="https://metamask.io/download" target="_blank" rel="noreferrer">MetaMaskをインストール</Link>
+                <Button variant="outlined" onClick={() => setActiveStep(1)}>Next</Button>
+              </Box>
+            </Box>
           </>
         )
       case 1:
