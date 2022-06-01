@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import { useWeb3React } from '@web3-react/core';
 import { Web3Provider } from '@ethersproject/providers';
-import { Box, Button, Step, Link, StepLabel, Stepper, Typography } from '@mui/material';
+import { Box, Button, Step, Link, StepLabel, Stepper, Typography, NoSsr } from '@mui/material';
 
 import { useConnectToMetaMask } from '../hooks/useConnectToMetaMask';
 import { useConnectToNetwork, networkParams } from '../hooks/useConnectToNetwork';
@@ -64,34 +64,36 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-        <Box sx={{ maxWidth: 450, background: '#424242', padding: '20px', borderRadius: '8px' }}>
-          {!completed &&
-            <>
-              <Typography component="h1" variant="h5" align="center" color="white">
-                Import Token
-              </Typography>
-              <Stepper
-                activeStep={activeStep}
-                orientation="vertical"
-              >
-                {steps.map((step) => (
-                  <Step key={step.label}>
-                    <StepLabel><Typography typography="body2">{step.label}</Typography></StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
-              <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-                {stepContent(activeStep)}
-              </Box>
-            </>}
-          {completed &&
-          <Typography variant="h5" color="white">
-            Thank you!<br />
-            You have completed all of steps 
-          </Typography>}
+      <NoSsr>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <Box sx={{ maxWidth: 450, background: '#424242', padding: '20px', borderRadius: '8px' }}>
+            {!completed &&
+              <>
+                <Typography component="h1" variant="h5" align="center" color="white">
+                  Import Token
+                </Typography>
+                <Stepper
+                  activeStep={activeStep}
+                  orientation="vertical"
+                >
+                  {steps.map((step) => (
+                    <Step key={step.label}>
+                      <StepLabel><Typography typography="body2">{step.label}</Typography></StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+                <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
+                  {stepContent(activeStep)}
+                </Box>
+              </>}
+            {completed &&
+            <Typography variant="h5" color="white">
+              Thank you!<br />
+              You have completed all of steps 
+            </Typography>}
+          </Box>
         </Box>
-      </Box>
+      </NoSsr>
     </>
   )
 }
