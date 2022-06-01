@@ -69,21 +69,23 @@ const Home: NextPage = () => {
           <Box sx={{ maxWidth: 450, background: '#424242', padding: '20px', borderRadius: '8px' }}>
             {!completed &&
               <>
-                <Typography component="h1" variant="h5" align="center" color="white">
+                <Typography component="h1" variant="h4" align="center" color="white">
                   Import Token
                 </Typography>
-                <Stepper
-                  activeStep={activeStep}
-                  orientation="vertical"
-                >
-                  {steps.map((step) => (
-                    <Step key={step.label}>
-                      <StepLabel><Typography typography="body2">{step.label}</Typography></StepLabel>
-                    </Step>
-                  ))}
-                </Stepper>
-                <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '48px' }}>
-                  {stepContent(activeStep)}
+                <Box sx={{ marginTop: '16px' }}>
+                  <Stepper
+                    activeStep={activeStep}
+                    orientation="vertical"
+                  >
+                    {steps.map((step) => (
+                      <Step key={step.label}>
+                        <StepLabel><Typography typography="body1">{step.label}</Typography></StepLabel>
+                      </Step>
+                    ))}
+                  </Stepper>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+                    {stepContent(activeStep)}
+                  </Box>
                 </Box>
               </>}
             {completed &&
